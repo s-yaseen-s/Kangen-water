@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kangen Egypt | Premium Alkaline Water & Water Ionizers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kangen: {
+                            primary: '#004BA0',
+                            light: '#598AC1',
+                            pale: '#B2C9E2',
+                            deep: '#003C80',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Tajawal', 'sans-serif'],
+                        arabic: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #003C80;
+            font-family: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .solid-card {
+            background: #FFFFFF;
+            border: 2px solid #B2C9E2;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .solid-card:hover {
+            border-color: #004BA0;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 75, 160, 0.15);
+        }
+
+        .primary-button {
+            background-color: #004BA0;
+            color: #FFFFFF;
+            transition: all 0.3s ease;
+        }
+
+        .primary-button:hover {
+            background-color: #003C80;
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 75, 160, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #598AC1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #004BA0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-kangen-primary selection:text-kangen-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 bg-kangen-white border-b-2 border-kangen-pale shadow-sm">
+        <nav class="max-w-7xl mx-auto rounded-full px-2 sm:px-6 py-2 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-kangen-primary flex items-center justify-center shadow-md group-hover:bg-kangen-deep transition-colors">
+                    <i class="fa-solid fa-droplet text-kangen-white text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg sm:text-xl tracking-wider text-kangen-primary flex items-center gap-2">
+                        KANGEN <span class="text-kangen-deep">EGYPT</span>
+                    </span>
+                    <span class="text-[10px] text-kangen-light tracking-widest uppercase font-arabic -mt-1 font-bold">كانجن ايجبت</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold text-kangen-deep">
+                <a href="#home" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">Home</a>
+                <a href="#about" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">About</a>
+                <a href="#water-types" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">Water Types</a>
+                <a href="#catalog" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">Catalog</a>
+                <a href="#faq" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">FAQ</a>
+                <a href="#contact" class="hover:text-kangen-primary transition-colors py-1 border-b-2 border-transparent hover:border-kangen-primary">Contact</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openModal('loginModal')" class="px-5 py-2 text-sm font-bold text-kangen-primary rounded-full border-2 border-kangen-primary hover:bg-kangen-pale transition-all">
+                    Login
+                </button>
+                <button onclick="openModal('signUpModal')" class="primary-button px-5 py-2 text-sm font-bold rounded-full">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-kangen-primary p-2 focus:outline-none" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden max-w-7xl mx-auto bg-kangen-pale mt-4 rounded-xl border border-kangen-primary p-6 flex flex-col gap-4 text-center">
+            <a href="#home" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">Home</a>
+            <a href="#about" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">About</a>
+            <a href="#water-types" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">Water Types</a>
+            <a href="#catalog" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">Catalog</a>
+            <a href="#faq" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">FAQ</a>
+            <a href="#contact" class="mobile-link text-kangen-deep font-bold hover:text-kangen-primary py-2">Contact</a>
+            <div class="flex justify-center gap-4 pt-4 border-t border-kangen-primary">
+                <button onclick="openModal('loginModal')" class="px-5 py-2 text-sm font-bold text-kangen-primary rounded-full border-2 border-kangen-primary w-full bg-kangen-white">Login</button>
+                <button onclick="openModal('signUpModal')" class="primary-button px-5 py-2 text-sm font-bold rounded-full w-full">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+            
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kangen-pale text-xs sm:text-sm font-bold text-kangen-deep border border-kangen-light">
+                    <span class="w-2 h-2 rounded-full bg-kangen-primary"></span>
+                    <span>Enagic Japan Certified Technology</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-5xl xl:text-6xl font-black text-kangen-deep leading-tight tracking-tight">
+                    Premium Alkaline Filter.<br>
+                    <span class="text-kangen-primary">Pure Ionized Water</span>
+                </h1>
+
+                <p class="text-kangen-deep text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-arabic font-medium">
+                    ماء الشرب القلوي المتأين الغني بالهيدروجين والخصائص المضادة للأكسدة. 
+                    قلل الملوثات الشائعة وحول ماء الصنبور إلى مصدر حيوية ونقاء ممتاز لصحتك وصحة عائلتك.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                    <button onclick="openModal('signUpModal')" class="primary-button px-8 py-3.5 font-bold rounded-full flex items-center gap-2 text-sm sm:text-base">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <a href="#water-types" class="px-8 py-3.5 text-kangen-primary font-bold rounded-full bg-kangen-white border-2 border-kangen-pale hover:border-kangen-primary hover:bg-kangen-pale transition-all text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-circle-play text-kangen-primary"></i>
+                        <span>Explore Benefits</span>
+                    </a>
+                </div>
+
+                <!-- Feature Highlights Badges -->
+                <div class="pt-8 border-t border-kangen-pale grid grid-cols-3 gap-4 text-center lg:text-left">
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-kangen-primary">pH 8.5-9.5</div>
+                        <div class="text-xs text-kangen-deep font-bold font-arabic mt-1">ماء صحي قلوي</div>
+                    </div>
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-kangen-primary">50+ Yrs</div>
+                        <div class="text-xs text-kangen-deep font-bold mt-1">Japanese Tech</div>
+                    </div>
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-kangen-primary">-400 ORP</div>
+                        <div class="text-xs text-kangen-deep font-bold font-arabic mt-1">مضاد أكسدة قوي</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Data Display Card -->
+            <div class="lg:col-span-6 relative flex justify-center">
+                <div class="w-full max-w-md bg-kangen-white border-4 border-kangen-pale rounded-3xl p-6 sm:p-8 shadow-2xl animate-float">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xs font-bold uppercase tracking-widest text-kangen-white bg-kangen-primary px-3 py-1 rounded-full">
+                            Featured Model: Leveluk K8
+                        </span>
+                        <div class="flex items-center gap-1.5 text-kangen-light text-xs font-bold">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-kangen-deep">(5.0)</span>
+                        </div>
+                    </div>
+
+                    <div class="relative bg-kangen-pale rounded-2xl p-6 border-2 border-kangen-light text-center flex flex-col items-center justify-center min-h-[300px]">
+                        <div class="w-full flex justify-between items-center mb-4 text-xs font-bold">
+                            <span id="currentWaterTypeLabel" class="text-kangen-deep uppercase tracking-wider">Kangen Alkaline (pH 9.5)</span>
+                            <div class="flex gap-1 items-center">
+                                <span class="w-2 h-2 rounded-full bg-kangen-primary"></span>
+                                <span class="text-kangen-deep">Active</span>
+                            </div>
+                        </div>
+
+                        <!-- Abstract Device Interface Representation -->
+                        <div class="w-48 h-48 rounded-xl bg-kangen-white shadow-md p-3 border-2 border-kangen-light flex flex-col justify-between">
+                            <div id="unitDisplay" class="w-full h-16 bg-kangen-deep rounded-lg flex flex-col items-center justify-center">
+                                <span id="displayPH" class="text-xl font-black text-kangen-white tracking-wider">pH 9.5</span>
+                                <span id="displayMode" class="text-[9px] text-kangen-pale font-bold tracking-widest uppercase">KANGEN WATER</span>
+                            </div>
+
+                            <div class="py-2 px-3 bg-kangen-pale rounded-md text-[10px] text-kangen-deep font-bold font-mono flex justify-between">
+                                <span>8 PLATES</span>
+                                <span>TITANIUM</span>
+                            </div>
+                            
+                            <div class="flex justify-center items-center py-2">
+                                <div class="w-12 h-3 bg-kangen-primary rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Mode Switchers -->
+                        <div class="mt-4 flex flex-wrap justify-center gap-2">
+                            <button onclick="changeWaterMode('9.5', 'KANGEN ALKALINE')" class="px-3 py-1 text-xs font-bold rounded-md bg-kangen-white text-kangen-primary border border-kangen-primary hover:bg-kangen-primary hover:text-kangen-white">pH 9.5</button>
+                            <button onclick="changeWaterMode('7.0', 'NEUTRAL WATER')" class="px-3 py-1 text-xs font-bold rounded-md bg-kangen-white text-kangen-primary border border-kangen-primary hover:bg-kangen-primary hover:text-kangen-white">pH 7.0</button>
+                            <button onclick="changeWaterMode('6.0', 'BEAUTY WATER')" class="px-3 py-1 text-xs font-bold rounded-md bg-kangen-white text-kangen-primary border border-kangen-primary hover:bg-kangen-primary hover:text-kangen-white">pH 6.0</button>
+                            <button onclick="changeWaterMode('2.5', 'STRONG ACIDIC')" class="px-3 py-1 text-xs font-bold rounded-md bg-kangen-white text-kangen-primary border border-kangen-primary hover:bg-kangen-primary hover:text-kangen-white">pH 2.5</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-between text-xs font-bold text-kangen-deep">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-kangen-primary"></i> Medical Grade Water</span>
+                        <a href="#catalog" class="text-kangen-primary hover:underline flex items-center gap-1">Order Unit <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WATER TYPES & BENEFITS SECTION -->
+    <section id="water-types" class="py-20 px-4 sm:px-8 bg-kangen-pale">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-black text-kangen-primary uppercase tracking-widest">7 Types of Healthy Water</h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-kangen-deep font-arabic">استخدامات أنواع مياه كانجن المختلفة</h3>
+                <p class="text-kangen-deep font-medium max-w-2xl mx-auto text-sm sm:text-base font-arabic">
+                    جهاز واحد يحول ماء الصنبور العادي إلى 7 أنواع مختلفة من المياه متعددة الأغراض لصحتك، وجمالك، ونظافة منزلك.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-glass-water"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 8.5 - 9.5</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">ماء الشرب القلوي المتأين</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            ترطيب منعش، غني بالهيدروجين النشط، وله خصائص مضادة للأكسدة تحارب الشوارد الحرة وتعزز طاقة الجسم.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Drinking & Hydration</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 8.5 - 9.5</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">ماء الطبخ والأطعمة</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            يعزز نكهة الشوربة والطهي، ويقلل الحاجة للملح الشديد من خلال إبراز الطعم الطبيعي للمكونات.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Soup, Rice & Stews</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 9.0 - 9.5</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">ماء تحضير الشاي والقهوة</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            يستخرج النكهة والرائحة الغنية للقهوة والشاي بسرعة فائقة وبكميات أقل من الحبوب والأوراق.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Rich Extraction</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 5.5 - 6.0</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">ماء التجميل للبشرة والشعر</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            ماء حامضي خفيف يماثل الحموضة الطبيعية للبشرة. يعمل كتونر قابض للمسام ويمنح الشعر لمعاناً ونعومة.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Skin Toning & Hair Care</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-baby"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 7.0</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">الماء المتعادل للأطفال والأدوية</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            ماء نقي وخالٍ من الكلوب الملوث، مثالي جداً لإعداد وجبات الرضع والأطفال وتناول العقاقير الطبية.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Baby Formula & Medications</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="solid-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-kangen-pale flex items-center justify-center text-kangen-primary mb-4 text-xl font-bold">
+                            <i class="fa-solid fa-apple-whole"></i>
+                        </div>
+                        <span class="text-xs font-black text-kangen-light uppercase tracking-wider">pH 11.5</span>
+                        <h4 class="text-xl font-black text-kangen-deep mt-1 mb-2 font-arabic">ماء تنظيف الخضروات والفواكه</h4>
+                        <p class="text-kangen-deep text-sm font-medium leading-relaxed font-arabic">
+                            ماء قوي التفكيك يزيل المبيدات الحشرية الزيتية والمواد الكيميائية الشمعية من الفواكه والخضار بشكل تام.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-kangen-pale text-xs font-bold text-kangen-primary flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Pesticide Removal</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG SECTION -->
+    <section id="catalog" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto bg-kangen-white">
+        <div class="text-center space-y-4 mb-16">
+            <h2 class="text-xs font-black text-kangen-light uppercase tracking-widest">Enagic Devices Catalog</h2>
+            <h3 class="text-3xl sm:text-4xl font-black text-kangen-deep font-arabic">أجهزة كانجن للماء التأيني في مصر</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="solid-card rounded-3xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl bg-kangen-pale flex items-center justify-center p-4 mb-6">
+                        <i class="fa-solid fa-box-tissue text-6xl text-kangen-primary"></i>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-black text-kangen-primary uppercase">8 Titanium Plates</span>
+                        <span class="text-xs bg-kangen-primary text-kangen-white font-bold px-2 py-1 rounded">Flagship</span>
+                    </div>
+                    <h4 class="text-xl font-black text-kangen-deep">Leveluk K8</h4>
+                    <p class="text-kangen-deep font-medium text-xs mt-2 font-arabic leading-relaxed">
+                        الجهاز الأحدث والأقوى من إيناجيك بخمس لغات، شاشة لمس ملونة، و8 صفائح بلاتينية للتأين العالي.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t-2 border-kangen-pale flex items-center justify-between">
+                    <span class="text-xs font-bold text-kangen-light">Official Warranty</span>
+                    <button onclick="openContactWithSubject('Leveluk K8 Inquiry')" class="px-4 py-2 text-xs font-bold bg-kangen-primary text-kangen-white rounded-full hover:bg-kangen-deep transition-colors">Inquire Price</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="solid-card rounded-3xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl bg-kangen-pale flex items-center justify-center p-4 mb-6">
+                        <i class="fa-solid fa-filter text-6xl text-kangen-primary"></i>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-black text-kangen-primary uppercase">7 Titanium Plates</span>
+                        <span class="text-xs bg-kangen-primary text-kangen-white font-bold px-2 py-1 rounded">Best Seller</span>
+                    </div>
+                    <h4 class="text-xl font-black text-kangen-deep">Leveluk SD501</h4>
+                    <p class="text-kangen-deep font-medium text-xs mt-2 font-arabic leading-relaxed">
+                        الجهاز الأكثر انتشاراً واستخداماً عالمياً للمنازل والمطاعم والمراكز الصحية.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t-2 border-kangen-pale flex items-center justify-between">
+                    <span class="text-xs font-bold text-kangen-light">Official Warranty</span>
+                    <button onclick="openContactWithSubject('Leveluk SD501 Inquiry')" class="px-4 py-2 text-xs font-bold bg-kangen-primary text-kangen-white rounded-full hover:bg-kangen-deep transition-colors">Inquire Price</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="solid-card rounded-3xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl bg-kangen-pale flex items-center justify-center p-4 mb-6">
+                        <i class="fa-solid fa-shower text-6xl text-kangen-primary"></i>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-black text-kangen-primary uppercase">Home Spa</span>
+                        <span class="text-xs bg-kangen-primary text-kangen-white font-bold px-2 py-1 rounded">Mineral Spa</span>
+                    </div>
+                    <h4 class="text-xl font-black text-kangen-deep">Anespa DX</h4>
+                    <p class="text-kangen-deep font-medium text-xs mt-2 font-arabic leading-relaxed">
+                        نظام الاستحمام الفاخر لإزالة الكلور بالكامل وإضافة المعادن الطبيعية من الينابيع اليابانية.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t-2 border-kangen-pale flex items-center justify-between">
+                    <span class="text-xs font-bold text-kangen-light">Official Warranty</span>
+                    <button onclick="openContactWithSubject('Anespa DX Inquiry')" class="px-4 py-2 text-xs font-bold bg-kangen-primary text-kangen-white rounded-full hover:bg-kangen-deep transition-colors">Inquire Price</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 px-4 sm:px-8 max-w-4xl mx-auto bg-kangen-white border-t-2 border-kangen-pale">
+        <div class="text-center space-y-4 mb-12">
+            <h2 class="text-xs font-black text-kangen-light uppercase tracking-widest">Got Questions?</h2>
+            <h3 class="text-3xl font-black text-kangen-deep font-arabic">الأسئلة الشائعة</h3>
+        </div>
+
+        <div class="space-y-4 font-arabic">
+            <div class="bg-kangen-pale rounded-2xl p-5 cursor-pointer border border-kangen-light hover:border-kangen-primary transition-colors" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center text-kangen-deep font-black text-base sm:text-lg">
+                    <span>ما هو ماء كانجن (Kangen Water) وكيف يعمل؟</span>
+                    <i class="fa-solid fa-chevron-down text-kangen-primary transition-transform"></i>
+                </div>
+                <div class="faq-answer hidden mt-3 text-kangen-deep font-medium text-sm leading-relaxed border-t border-kangen-light pt-3">
+                    ماء كانجن هو ماء قلوي متأين يتم إنتاجه عن طريق أجهزة التحليل الكهربائي من شركة Enagic اليابانية. يقوم الجهاز بتصفية الماء من الشوائب ثم تفكيك جزيئاته لإعطاء ماء قلوي غني بـ الهيدروجين النشط.
+                </div>
+            </div>
+
+            <div class="bg-kangen-pale rounded-2xl p-5 cursor-pointer border border-kangen-light hover:border-kangen-primary transition-colors" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center text-kangen-deep font-black text-base sm:text-lg">
+                    <span>هل الجهاز حاصل على اعتمادات طبية ورسمية؟</span>
+                    <i class="fa-solid fa-chevron-down text-kangen-primary transition-transform"></i>
+                </div>
+                <div class="faq-answer hidden mt-3 text-kangen-deep font-medium text-sm leading-relaxed border-t border-kangen-light pt-3">
+                    نعم، أجهزة إيناجيك حاصلة على شهادة ISO 13485 كأجهزة طبية معتمدة في يابان ومستخدمة في أكثر من 250 مستشفى هناك منذ أكثر من 50 عاماً.
+                </div>
+            </div>
+
+            <div class="bg-kangen-pale rounded-2xl p-5 cursor-pointer border border-kangen-light hover:border-kangen-primary transition-colors" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center text-kangen-deep font-black text-base sm:text-lg">
+                    <span>أين يقع فرع كانجن ايجبت في القاهرة؟</span>
+                    <i class="fa-solid fa-chevron-down text-kangen-primary transition-transform"></i>
+                </div>
+                <div class="faq-answer hidden mt-3 text-kangen-deep font-medium text-sm leading-relaxed border-t border-kangen-light pt-3">
+                    يقع المقر في محافظة الجيزة بمنطقة القاهرة الكبرى، ويمكنكم زيارتنا لتجربة الماء ومعاينة الأجهزة مباشرة خلال مواعيد العمل.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER SECTION -->
+    <footer id="contact" class="pt-16 pb-12 px-4 sm:px-8 bg-kangen-deep">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
+            
+            <!-- Business Info -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-kangen-white flex items-center justify-center text-kangen-primary font-bold text-xl">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-black text-kangen-white">Kangen Egypt</h4>
+                        <p class="text-xs text-kangen-pale font-bold font-arabic mt-1">الموزع المستقل لأجهزة Enagic</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3 text-sm text-kangen-pale font-medium font-arabic">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-kangen-light mt-1"></i>
+                        <span>الجيزة، محافظة الجيزة، مصر</span>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-kangen-light"></i>
+                        <a href="tel:01110200059" class="hover:text-kangen-white font-bold transition-colors dir-ltr">011 10200059</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a href="https://wa.me/201110200059" target="_blank" class="px-5 py-2.5 rounded-full bg-kangen-primary text-kangen-white font-bold text-xs flex items-center gap-2 hover:bg-kangen-light transition-colors border border-kangen-light">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>واتساب مباشر</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7">
+                <div class="bg-kangen-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h4 class="text-xl font-black text-kangen-deep mb-2 font-arabic">تواصل معنا واستفسر عن الأجهزة</h4>
+                    <p class="text-xs text-kangen-light font-bold mb-6 font-arabic">اترك بياناتك وسيتواصل معك أحد خبراء كانجن ايجبت لتقديم الاستشارة وتجربة المياه مجاناً.</p>
+
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-black text-kangen-deep mb-1 font-arabic">الاسم بالكامل</label>
+                                <input type="text" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-black text-kangen-deep mb-1 font-arabic">رقم الهاتف</label>
+                                <input type="tel" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-black text-kangen-deep mb-1 font-arabic">موضوع الاستفسار</label>
+                            <input type="text" id="formSubject" class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-black text-kangen-deep mb-1 font-arabic">الرسالة</label>
+                            <textarea rows="3" class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary"></textarea>
+                        </div>
+
+                        <button type="submit" class="primary-button w-full py-3 rounded-xl font-bold text-sm font-arabic">
+                            إرسال الطلب الآن
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-kangen-light flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-kangen-pale">
+            <p>© 2026 Kangen Egypt. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#home" class="hover:text-kangen-white">Privacy Policy</a>
+                <a href="#home" class="hover:text-kangen-white">Enagic Official Distributor</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-kangen-deep/90 backdrop-blur-sm">
+        <div class="bg-kangen-white w-full max-w-md rounded-3xl p-6 sm:p-8 relative border-2 border-kangen-primary shadow-2xl">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-kangen-light hover:text-kangen-primary text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-black text-kangen-deep mb-2">Login to Account</h3>
+            
+            <form onsubmit="handleAuthSubmit(event, 'Login Successful!')" class="space-y-4 mt-6">
+                <div>
+                    <label class="block text-xs font-bold text-kangen-deep mb-1">Email / Phone</label>
+                    <input type="text" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-kangen-deep mb-1">Password</label>
+                    <input type="password" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                </div>
+                <button type="submit" class="primary-button w-full py-3 rounded-xl font-bold text-sm">Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signUpModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-kangen-deep/90 backdrop-blur-sm">
+        <div class="bg-kangen-white w-full max-w-md rounded-3xl p-6 sm:p-8 relative border-2 border-kangen-primary shadow-2xl">
+            <button onclick="closeModal('signUpModal')" class="absolute top-4 right-4 text-kangen-light hover:text-kangen-primary text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-black text-kangen-deep mb-2">Create Account</h3>
+            
+            <form onsubmit="handleAuthSubmit(event, 'Account Created Successfully!')" class="space-y-4 mt-6">
+                <div>
+                    <label class="block text-xs font-bold text-kangen-deep mb-1">Full Name</label>
+                    <input type="text" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-kangen-deep mb-1">Phone Number</label>
+                    <input type="tel" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-kangen-deep mb-1">Password</label>
+                    <input type="password" required class="w-full bg-kangen-pale/30 border-2 border-kangen-pale rounded-xl px-4 py-2.5 text-sm text-kangen-deep focus:outline-none focus:border-kangen-primary">
+                </div>
+                <button type="submit" class="primary-button w-full py-3 rounded-xl font-bold text-sm">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-kangen-white px-6 py-4 rounded-2xl border-2 border-kangen-primary shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl text-kangen-primary"></i>
+        <span id="toastMsg" class="text-sm font-bold text-kangen-deep">Notification</span>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function changeWaterMode(ph, title) {
+            document.getElementById('displayPH').innerText = 'pH ' + ph;
+            document.getElementById('displayMode').innerText = title;
+            document.getElementById('currentWaterTypeLabel').innerText = title + ' (pH ' + ph + ')';
+        }
+
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('.fa-chevron-down');
+            
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function openModal(modalId) { document.getElementById(modalId).classList.remove('hidden'); }
+        function closeModal(modalId) { document.getElementById(modalId).classList.add('hidden'); }
+        function openContactWithSubject(subject) {
+            document.getElementById('formSubject').value = subject;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('شكراً لتواصلك مع كانجن ايجبت! سيتم التواصل معك قريباً.');
+            e.target.reset();
+        }
+
+        function handleAuthSubmit(e, message) {
+            e.preventDefault();
+            closeModal('loginModal');
+            closeModal('signUpModal');
+            showToast(message);
+        }
+    </script>
+</body>
+</html>
